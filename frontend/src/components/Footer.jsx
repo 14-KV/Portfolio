@@ -7,13 +7,13 @@ export default function Footer() {
         transition-all duration-700 ease-out transform overflow-hidden px-8">
       {/* Social Links - Centered */}
       <div className="flex-1 flex space-x-8">
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" 
+        <a href="https://www.linkedin.com/in/khushi-verma-iitbhu/" target="_blank" rel="noopener noreferrer" 
            className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
           <FaLinkedin size={24} />
           <span className="font-bold">Follow on LinkedIn</span>
         </a>
 
-        <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" 
+        <a href="https://github.com/14-KV" target="_blank" rel="noopener noreferrer" 
            className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
           <FaGithub size={24} />
           <span className="font-bold">Follow on GitHub</span>
