@@ -8,7 +8,6 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 
-
 export default function App() {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
@@ -16,7 +15,6 @@ export default function App() {
 
   useEffect(() => {
     const root = document.documentElement;
-  
     if (darkMode) {
       root.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -25,22 +23,25 @@ export default function App() {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
-  
+
   return (
     <Router>
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      
-      <div className="pt-16 pb-16 min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white bg-gradient-to-r from-blue-200 to-purple-600 dark:from-gray-900 dark:to-black 
-        transition-all duration-700 ease-out transform overflow-hidden px-8">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-500">
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
+        {/* Main content fills available space and prevents gap */}
+        <main className="flex-grow px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 }

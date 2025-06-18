@@ -24,7 +24,7 @@ const Contact = () => {
       const result = await response.json();
       setStatus(result.success ? "Message sent successfully!" : "Failed to send message");
       if (result.success) {
-        setFormData({ name: "", email: "", message: "" }); // Reset form after success
+        setFormData({ name: "", email: "", message: "" });
       }
     } catch (error) {
       setStatus("Error sending message.");
@@ -34,25 +34,27 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-12 px-6 text-center text-gray-900 dark:text-white bg-white dark:bg-gray-900 bg-gradient-to-r from-blue-200 to-purple-600 dark:from-gray-900 dark:to-black 
-      transition-all duration-700 ease-out transform overflow-hidden"
+      className="py-20 px-6 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-black transition duration-700"
     >
       <motion.h2
-        className="text-4xl font-bold"
-        initial={{ opacity: 0, y: -20 }}
+        className="text-4xl font-bold text-center text-black dark:text-white"
+        initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        Get In Touch
+        Let's Connect
       </motion.h2>
-      <p className="mt-4 text-lg">Feel free to reach out for any collaboration or queries.</p>
-      
-      <div className="mt-8 space-y-4">
+
+      <p className="mt-4 text-center text-lg text-gray-700 dark:text-gray-300">
+        Whether it's a question, opportunity, or just a hello — I’d love to hear from you!
+      </p>
+
+      <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-6">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex justify-center items-center space-x-3 text-lg"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center space-x-3 text-lg"
         >
           <FaEnvelope className="text-red-600 dark:text-red-400" size={24} />
           <a
@@ -64,10 +66,10 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex justify-center items-center space-x-3 text-lg"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex items-center space-x-3 text-lg"
         >
           <FaLinkedin className="text-blue-600 dark:text-blue-400" size={24} />
           <a
@@ -80,15 +82,18 @@ const Contact = () => {
           </a>
         </motion.div>
       </div>
-      
+
       <motion.form
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="mt-8 max-w-lg mx-auto bg-purple-300 dark:bg-gray-800 p-6 rounded-lg shadow-md"
         onSubmit={handleSubmit}
+        className="mt-12 mx-auto max-w-xl bg-white/30 dark:bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg"
       >
-        <h3 className="text-xl font-semibold mb-4">Send a Message</h3>
+        <h3 className="text-2xl font-semibold text-center text-purple-800 dark:text-purple-300 mb-6">
+          Send Me a Message
+        </h3>
+
         <input
           type="text"
           name="name"
@@ -96,7 +101,7 @@ const Contact = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 mb-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <input
           type="email"
@@ -105,7 +110,7 @@ const Contact = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 mb-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <textarea
           name="message"
@@ -114,19 +119,20 @@ const Contact = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 mb-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
         ></textarea>
+
         <button
           type="submit"
-          className="w-full p-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all"
+          className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all"
         >
           Send Message
         </button>
-        {status && <p className="mt-3 text-white font-semibold">{status}</p>}
+
+        {status && <p className="mt-4 text-center font-medium">{status}</p>}
       </motion.form>
     </section>
   );
 };
 
 export default Contact;
-
